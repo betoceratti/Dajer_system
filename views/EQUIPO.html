@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <title>APP DAJER</title>
+    <?!= include("CSS");?>
+  </head>
+  <body>
+
+        <!-- menu reposive -->
+    <nav class="navbar navbar-light bg-light fixed-bottom mt-3">
+        <div class="container">
+
+          <div class="navbar m-auto" id="navbarNav">
+            <ul class="nav pb-1">
+              <li class="nav-item">
+                <a class="nav-link active exigibles  text-warning" aria-current="page" href="#sectionExigibles"><i class="bi bi-bell-fill"></i></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link indicadores" href="#sectionIndicadores"><i class="bi bi-list-ol"></i></a>
+              </li>
+               <li class="nav-item">
+                <a class="nav-link grafica" href="#sectionChart"><i class="bi bi-bar-chart-line"></i></a>
+              </li>
+                <li class="nav-item">
+                <a class="nav-link today" href="#sectionToday"><i class="bi bi-calendar-check"></i></a>
+              </li>
+               <li class="nav-item">
+                <a class="nav-link team " href="#sectionTeam"><i class="bi bi-people-fill"></i></a>
+              </li>
+             
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    <div class="container pb-5">
+        <!-- tittle -->
+      <div class="text-center p-2 shadow rounded w-75 mx-auto bg-light">
+          <h1 class="h2 text-muted">Balance : <?= dif ?></h1>
+      </div>
+
+      <!--SECCION 1 EXIGIBLES-->
+
+<section class="container mb-2" id="sectionExigibles">
+    <div class="text-center p-2">
+            <h2 class="display-2 fw-bold text-black-50"><?= totalExigibles ?></h2>
+               <p class="text-muted h5">Casos Exigibles de Hoy <i class="bi bi-coin"></i></p>
+        </div>
+          <div class="row border p-2 bg-body shadow my-2">
+            
+            <div class="col col-sm-3">
+            <div class=" fs-5">Pago</div>
+            </div>
+            <div class="col col-sm-7">
+            <div class="fs-5 ">Vigente</div>
+            </div>
+            <div class="col col-sm-2">
+            <div class=" fs-5 ">Vencido</div>
+            </div>
+         
+       
+            
+        </div>
+
+           <?= deHoy.forEach(cliente =>{?>
+        
+           <div class="row m-1">
+         
+            <div class="col col-md-3 bg-success p-1 br-1 rounded">
+            <div class="text-white"><?= cliente[0]?></div>
+            </div>
+             </div>
+       
+           <div class="row border p-2">
+            
+            <div class="col col-sm-3">
+            <div class="fw-bold fs-5"><?= cliente[1]?></div>
+            </div>
+            <div class="col col-sm-7">
+            <div class="fs-5 text-primary"><?= cliente[2]?></div>
+            </div>
+            <div class="col col-sm-2">
+            <div class="fw-bold fs-5 text-danger"><?= cliente[3]?></div>
+            </div>
+         
+       
+            
+        </div>
+        
+        
+        
+        <? }) ?>
+
+     
+
+</section>
+
+
+
+<!--SECCION 2 INDICADORES-->
+  <section id="sectionIndicadores" class="container hide my-3">
+      <div class="text-center p-2">
+            <h2 class="display-2 fw-bold text-black-50">Kpis</h2>
+               <p class="text-muted h5"><i class="bi bi-coin"></i></p>
+        </div>
+
+         <?= indicadores.forEach(key =>{?>
+        
+        
+
+             <? if( key[0] == "CARTERA VENCIDA"){?>
+              <div class="row m-1">
+            <div class="col col-md-3 bg-danger p-1 br-1 rounded">
+            <div class="text-white"><?= key[0]?></div>
+            </div>
+             </div>
+          
+             
+             <?} else{?>
+              <div class="row m-1">
+            <div class="col col-md-3 bg-success p-1 br-1 rounded">
+            <div class="text-white"><?= key[0]?></div>
+            </div>
+             </div>              
+             
+             <?
+
+
+
+             }  ?>             
+           
+           <?if(key[0] == "CARTERA VENCIDA" || key[0] == "UTILIDAD" || key[0] == "INGRESOS"){?>
+           
+              <div class="row border p-2">
+            
+            <div class="col col-sm-3">
+            <div class="fw-bold fs-5 text-danger"><?= key[1]?></div>
+            </div>      
+            
+             </div>
+           
+           
+           <?}else{?>
+           
+              <div class="row border p-2">
+            
+            <div class="col col-sm-3">
+            <div class="fw-bold fs-5"><?= key[1]?></div>
+            </div> 
+       
+            
+        </div> <?}
+           
+           
+           
+           ?>
+       
+        
+        
+        
+        
+        <? }) ?>
+ 
+</section>
+
+
+ <!--VENCIDOS-->
+<section id="sectionTeam" class="container hide my-4">
+  <div class="text-center p-2">
+            <h2 class="display-2 fw-bold text-danger"><?= totalVencidos ?></h2>
+               <p class="text-muted h5">IMOR <i class="bi bi-coin"></i></p>
+        </div>
+          <div class="row border p-2 bg-body shadow my-2">
+            
+            <div class="col col-sm-3">
+            <div class=" fs-5">Vigente</div>
+            </div>
+            <div class="col col-sm-7">
+            <div class="fs-5 ">Vencido</div>
+            </div>
+            <div class="col col-sm-2">
+            <div class=" fs-5 ">pagos V</div>
+            </div>
+         
+       
+            
+        </div>
+
+           <?= getVencidos.forEach(cliente =>{?>
+        
+           <div class="row m-1">
+         
+            <div class="col col-md-3 bg-danger p-1 br-1 rounded">
+            <div class="text-white"><?= cliente[0]?></div>
+            </div>
+             </div>
+       
+           <div class="row border p-2">
+            
+            <div class="col col-sm-3">
+            <div class="fw-bold fs-5 text-primary"><?= cliente[1]?></div>
+            </div>
+            <div class="col col-sm-7">
+            <div class="fs-5 text-danger"><?= cliente[2]?></div>
+            </div>
+            <div class="col col-sm-2">
+            <div class="fw-bold fs-5 text-danger"><?= cliente[3]?></div>
+            </div>
+         
+       
+            
+        </div>
+        
+        
+        
+        <? }) ?>
+
+
+</section> 
+
+
+
+   <!--Nuestro equipo-->
+<section id="section" class="container hide my-4">
+     <div class="row text-center p-2">
+     <h1 class="text-muted">Nuestro equipo--</h1>
+     </div>
+
+ <div class="row justify-content-center ">
+  
+    <?=  getData.forEach((row)=>{?>
+     
+    <div class="card m-3 col-10 col-md-4 shadow rounded" width="10rem">
+      <img src="https://drive.google.com/uc?export=dowmload&id=<?= row[5]?>" class="card-img-top" alt="...">
+      <div class="card-body text-center">
+        <h5 class="card-title"><?= row[0] ?></h5>
+        <h6 class="card-subtitle">
+          <?= row[6]?>
+        </h6>
+        <p class="card-text">Position /<?= row[3]?></p>
+
+        <a href="#" class="btn btn-secondary btn-sm">Read more</a>
+      </div>
+</div>
+<?}); ?>
+ </div>
+
+
+</section> 
+
+
+   <!--Graficas-->
+   <section id="sectionChart" class="container hide my-4 pb-3 chart">
+      <div class="row text-center p-2">
+     <h1 class="text-muted">Reportes 2022</h1>
+     </div>
+
+    <div class="row justify-content-center pb-5">
+
+  <div class="chart-container mx-auto pb-3" style="position: relative; height:60vh; width:90vw">
+    <canvas id="myChart"></canvas>
+    <hr>
+    <canvas id="myChart2"></canvas>
+    <hr>
+      <canvas id="myChart3"></canvas>
+  </div>
+
+    </div>
+
+
+   </section>
+
+ <!--CONTAINER REPORTE DE OPERACIONES DE EL DIA -->
+ <section id="sectionToday" class="container hide my-4">
+    <div class="row text-center p-2">
+     <h1 class="text-muted">Operaciones del dia</h1>
+     </div>
+
+<!--clickeos-->
+<h3>Pago en Cedulas</h3>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      
+     
+      
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"></th>
+        <? for(i=0; i < getClickeos.length;i++){
+        ?>
+        <tr>
+        <td><?= getClickeos[i][0] ?></td>
+       
+        
+        </tr>
+        <?} ?> 
+     
+  
+  
+  </tbody>
+  </table>
+ <br>
+<!--control de pagos-->
+<h3>Pago en Control de Pagos</h3>
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Pago</th>
+     
+      
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"></th>
+        <? for(i=0; i < getPagos.length;i++){
+        ?>
+        <tr>
+        <td><?= getPagos[i][0] ?></td>
+        <td>$<?= Math.round(getPagos[i][1]) ?></td>
+        
+        </tr>
+        <?} ?> 
+     
+  
+  
+  </tbody>
+  </table>
+  <br>
+
+
+  <!--gastos de dia-->
+  <h3>Gastos</h3>
+    <?= getGastos.forEach(cliente =>{?>
+        
+           <div class="row m-1">
+         
+            <div class="col col-md-3 bg-success p-1 br-1 rounded">
+            <div class="text-white"><?= cliente[0]?></div>
+            </div>
+             </div>
+       
+           <div class="row border p-2">
+            
+            <div class="col col-sm-3">
+            <div class="fw-bold fs-6"><?= cliente[1]?></div>
+            </div>
+            <div class="col col-sm-7">
+            <div class="fs-6 text-secondary"><?= cliente[2]?></div>
+            </div>
+            <div class="col col-sm-2">
+            <div class="fw-bold fs-6 text-primary"><?= cliente[3]?></div>
+            </div>
+         
+       
+            
+        </div>
+        
+        
+        
+        <? }) ?>
+
+   <br>
+  <!--Colaboradores movimientos-->
+   <h4>Colaboradores</h4>
+    <?= getColab.forEach(cliente =>{?>
+        
+           <div class="row m-1">
+         
+            <div class="col col-md-3 bg-success p-1 br-1 rounded">
+            <div class="text-white"><?= cliente[0]?></div>
+            </div>
+             </div>
+       
+           <div class="row border p-2">
+            
+            <div class="col col-sm-3">
+            <div class="fw-bold fs-6"><?= cliente[1]?></div>
+            </div>
+            <div class="col col-sm-7">
+            <div class="fs-6 text-secondary"><?= cliente[2]?></div>
+            </div>
+            <div class="col col-sm-2">
+            <div class="fw-bold fs- text-primary"><?= cliente[3]?></div>
+            </div>
+         
+       
+            
+        </div>
+        
+        
+        
+        <? }) ?>
+
+  
+
+ </section>
+ </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>   
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+
+
+  <script>
+
+    const enlaces = document.querySelectorAll('.nav .nav-item a')
+    const cash = document.getElementById('sectionExigibles')
+    const azteca = document.getElementById('sectionIndicadores')
+    const bbva = document.getElementById('sectionTeam')
+    const chart = document.getElementById('sectionChart')
+    const today = document.getElementById('sectionToday')
+
+    enlaces.forEach(enlace =>{
+
+        enlace.addEventListener('click',(e)=>{
+            e.preventDefault()
+
+          if(e.target.classList.contains('exigibles')){
+              
+              bbva.classList.add('hide')
+              azteca.classList.add('hide')
+              chart.classList.add('hide')
+              today.classList.add('hide')   
+              cash.classList.toggle('hide')
+              enlaces.forEach(elemento => elemento.classList.remove('active'))
+              enlace.classList.toggle('active')
+              
+          }
+
+          if(e.target.classList.contains('indicadores')){
+
+            cash.classList.add('hide')
+            bbva.classList.add('hide')
+            chart.classList.add('hide')
+            today.classList.add('hide')
+            azteca.classList.toggle('hide')
+            enlaces.forEach(elemento => elemento.classList.remove('active'))
+            enlace.classList.toggle('active')
+          
+            }
+
+            if(e.target.classList.contains('team')){
+                cash.classList.add('hide')
+                azteca.classList.add('hide')
+                chart.classList.add('hide')
+                today.classList.add('hide')
+                bbva.classList.toggle('hide')
+                enlaces.forEach(elemento => elemento.classList.remove('active'))
+                enlace.classList.toggle('active')
+              
+              
+            }
+
+             if(e.target.classList.contains('grafica')){
+                cash.classList.add('hide')
+                azteca.classList.add('hide')
+                bbva.classList.add('hide')
+                 today.classList.add('hide')
+                chart.classList.toggle('hide')
+                enlaces.forEach(elemento => elemento.classList.remove('active'))
+                enlace.classList.toggle('active')
+              
+              
+            }
+
+             if(e.target.classList.contains('today')){
+                cash.classList.add('hide')
+                azteca.classList.add('hide')
+                bbva.classList.add('hide')
+                chart.classList.add('hide')
+                today.classList.toggle('hide')
+                enlaces.forEach(elemento => elemento.classList.remove('active'))
+                enlace.classList.toggle('active')
+              
+              
+            }
+
+
+
+        })
+
+});
+
+
+window.addEventListener('load',cargarDatos)
+
+function cargarDatos(){
+
+google.script.run.withSuccessHandler(renderGraficas).getColocacion();
+
+};
+
+
+
+function renderGraficas(data){
+
+const ctx = document.getElementById('myChart')
+const ctx2 = document.getElementById('myChart2')
+const ctx3 = document.getElementById('myChart3')
+
+let conceptos = []
+let valores = []
+let ingresos = []
+let gastos = []
+
+data.forEach(mes =>{
+   conceptos.push(mes[0])
+   valores.push(mes[1])
+   ingresos.push(mes[2])
+   gastos.push(mes[3])
+
+
+})
+
+const myChart = new Chart(ctx,{
+
+type: "line",
+
+data:{ 
+labels: conceptos,
+datasets: [{
+
+label: "Colocacion",
+data: valores,
+backgroundColor: [
+  
+    ' rgba(127, 193, 29, 0.82)',
+      ' rgba(0, 0, 255, 0.821)',
+    'rgb(255, 205, 86)'
+
+],
+borderColor:[
+    'rgba(127, 193, 29, 0.82',
+    'rgb(54, 162, 235)',
+    'rgb(255, 205, 86)'
+
+],
+
+borderWidth: 1,
+
+title:"A T T I"
+}]
+},
+
+
+});   
+
+//grafica 2
+const myChart2 = new Chart(ctx2,{
+
+type: "line",
+
+data:{ 
+labels: conceptos,
+datasets: [{
+
+label: "Ingresos",
+data: ingresos,
+backgroundColor: [
+  
+    '  rgba(40, 29, 193, 0.82)',
+    ' rgba(21, 6, 222, 0.82)',
+    'rgb(255, 205, 86)'
+
+],
+borderColor:[
+    ' rgba(40, 29, 193, 0.82)',
+    'rgb(54, 162, 235)',
+    ' rgb(21, 6, 222)'
+
+],
+
+borderWidth: 1,
+
+title:"A T T I"
+}]
+},
+
+
+});   
+
+//grafica 3 gastos
+
+const myChart3 = new Chart(ctx3,{
+
+type: "line",
+
+data:{ 
+labels: conceptos,
+datasets: [{
+
+label: "Gastos",
+data: gastos,
+backgroundColor: [
+  
+    'rgba(221, 23, 69, 0.82)',
+    ' rgba(21, 6, 222, 0.82)',
+    'rgb(255, 205, 86)'
+
+],
+borderColor:[
+    'rgb(221, 23, 69)',
+    'rgb(54, 162, 235)',
+    ' rgb(21, 6, 222)'
+
+],
+
+borderWidth: 1,
+
+title:"A T T I"
+}]
+},
+
+
+});   
+
+
+
+};
+
+
+
+</script>  
+   
+   <!-- <?!= include("JS");?> <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Fecha</th>
+      <th scope="col">Monto</th>
+      <th scope="col">Categoria</th>
+      <th scope="col">Concepto</th>
+      
+     
+      
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"></th>
+        <? for(i=0; i <getGastos.length;i++){
+        ?>
+        <tr>
+        <td><?=getGastos[i][0] ?></td>
+         <td><?=getGastos[i][1] ?></td>
+          <td><?=getGastos[i][2] ?></td>
+           <td><?=getGastos[i][3] ?></td>
+       
+        
+        </tr>
+        <?} ?> 
+     
+  
+  
+  </tbody>
+  </table> -->
+  </body>
+
+
+
+
+  
+
+
+</html>
+
+
+

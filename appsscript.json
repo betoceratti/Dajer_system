@@ -1,0 +1,180 @@
+{
+  "timeZone": "America/Mexico_City",
+  "dependencies": {},
+  "webapp": {
+    "executeAs": "USER_DEPLOYING",
+    "access": "ANYONE"
+  },
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "sheets": {
+    "macros": [
+      {
+        "menuName": "saliredoglobal",
+        "functionName": "saliredoglobal",
+        "defaultShortcut": "Ctrl+Alt+Shift+1"
+      },
+      {
+        "menuName": "MOSTRAR-TABLERO",
+        "functionName": "myFunction"
+      },
+      {
+        "menuName": "duplicar_hoja",
+        "functionName": "duplicar_hoja",
+        "defaultShortcut": "Ctrl+Alt+Shift+2"
+      },
+      {
+        "menuName": "DASHBOARD",
+        "functionName": "DASHBOARD"
+      },
+      {
+        "menuName": "BASECLIENTES",
+        "functionName": "BASECLIENTES"
+      },
+      {
+        "menuName": "OCULTAR_TABLA",
+        "functionName": "OCULTAR_TABLA"
+      },
+      {
+        "menuName": "MOSTRAR_TABLA",
+        "functionName": "MOSTRAR_TABLA"
+      },
+      {
+        "menuName": "copiarformato",
+        "functionName": "copiarformato",
+        "defaultShortcut": "Ctrl+Alt+Shift+0"
+      },
+      {
+        "menuName": "copiarformato 1",
+        "functionName": "copiarformato1",
+        "defaultShortcut": "Ctrl+Alt+Shift+7"
+      },
+      {
+        "menuName": "copiarF",
+        "functionName": "copiarF",
+        "defaultShortcut": "Ctrl+Alt+Shift+7"
+      },
+      {
+        "menuName": "copiacedularenovacion",
+        "functionName": "copiacedularenovacion",
+        "defaultShortcut": "Ctrl+Alt+Shift+9"
+      },
+      {
+        "menuName": "REPORTES",
+        "functionName": "REPORTES"
+      },
+      {
+        "menuName": "login",
+        "functionName": "login"
+      },
+      {
+        "menuName": "MENSAJE",
+        "functionName": "MENSAJE"
+      },
+      {
+        "menuName": "buscar",
+        "functionName": "buscar"
+      },
+      {
+        "menuName": "limpiar",
+        "functionName": "limpiar"
+      },
+      {
+        "menuName": "BLOQUEO",
+        "functionName": "BLOQUEO"
+      },
+      {
+        "menuName": "DESBLOQUEO",
+        "functionName": "DESBLOQUEO"
+      },
+      {
+        "menuName": "KEY",
+        "functionName": "KEY"
+      },
+      {
+        "menuName": "OCULTAR",
+        "functionName": "OCULTAR"
+      },
+      {
+        "menuName": "HIDE",
+        "functionName": "HIDE"
+      },
+      {
+        "menuName": "SHOW",
+        "functionName": "SHOW"
+      },
+      {
+        "menuName": "NOTCOLOR",
+        "functionName": "NOTCOLOR"
+      },
+      {
+        "menuName": "WHITCOLOR",
+        "functionName": "WHITCOLOR"
+      },
+      {
+        "menuName": "DESBLK",
+        "functionName": "DESBLK"
+      },
+      {
+        "menuName": "NOTOCAR",
+        "functionName": "NOTOCAR"
+      },
+      {
+        "menuName": "indicadores",
+        "functionName": "indicadores"
+      },
+      {
+        "menuName": "doGet",
+        "functionName": "doGet"
+      },
+      {
+        "menuName": "TABLA-VENC",
+        "functionName": "myFunction"
+      },
+      {
+        "menuName": "BLOK",
+        "functionName": "BLOK"
+      },
+      {
+        "menuName": "copy",
+        "functionName": "copy"
+      },
+      {
+        "menuName": "CASHFLOW",
+        "functionName": "CASHFLOW"
+      },
+      {
+        "menuName": "CASHFLOW",
+        "functionName": "CASHFLOW"
+      },
+      {
+        "menuName": "cashflow",
+        "functionName": "cashflow"
+      },
+      {
+        "menuName": "cashflow",
+        "functionName": "cashflow"
+      },
+      {
+        "menuName": "NOTAS",
+        "functionName": "NOTAS"
+      },
+      {
+        "menuName": "ref",
+        "functionName": "ref"
+      },
+      {
+        "menuName": "reff",
+        "functionName": "reff"
+      },
+      {
+        "menuName": "COMENTARUI",
+        "functionName": "COMENTARUI"
+      },
+      {
+        "menuName": "DD",
+        "functionName": "DD"
+      }
+    ]
+  }
+}

@@ -1,0 +1,53 @@
+<script>
+
+  const enlaces = document.querySelectorAll('.navbar-nav .nav-item a')
+const cash = document.getElementById('sectionExigibles')
+const azteca = document.getElementById('sectionIndicadores')
+const bbva = document.getElementById('sectionTeam')
+
+enlaces.forEach(enlace =>{
+
+    enlace.addEventListener('click',(e)=>{
+        e.preventDefault()
+
+       if(e.target.classList.contains('exigibles')){
+          
+           bbva.classList.add('hide')
+           azteca.classList.add('hide')
+           cash.classList.toggle('hide')
+           enlaces.forEach(elemento => elemento.classList.remove('active'))
+           enlace.classList.toggle('active')
+          
+       }
+
+       if(e.target.classList.contains('indicadores')){
+
+        cash.classList.add('hide')
+        bbva.classList.add('hide')
+        azteca.classList.toggle('hide')
+        enlaces.forEach(elemento => elemento.classList.remove('active'))
+        enlace.classList.toggle('active')
+      
+        }
+
+        if(e.target.classList.contains('team')){
+            cash.classList.add('hide')
+            azteca.classList.add('hide')
+            bbva.classList.toggle('hide')
+            enlaces.forEach(elemento => elemento.classList.remove('active'))
+            enlace.classList.toggle('active')
+           
+           
+        }
+
+
+
+
+    })
+
+
+
+
+});
+
+</script>  
